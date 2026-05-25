@@ -27,3 +27,17 @@ A real-time appointment waitlist system that fills cancelled slots by notifying 
 Email: puttigreeshmasree@gmail.com  
 LinkedIn: https://www.linkedin.com/in/greeshma-sree-putti-9292502bb/  
 LeetCode: https://leetcode.com/u/greeshu__76/
+
+## Screenshots
+
+### Home
+![Home](./screenshots/home.png)
+
+### Skills
+![Skills](./screenshots/skills.png)
+
+### Projects
+![Projects](./screenshots/projects.png)
+
+### Contact
+![Contact](./screenshots/contact.png)
