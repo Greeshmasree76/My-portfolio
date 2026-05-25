@@ -2,6 +2,10 @@
 
 Professional developer portfolio built to showcase my skills, projects, education, and contact details.
 
+ ## Live Portfolio
+
+🔗 Live Demo: [View Portfolio](https://my-portfolio-pied-sigma-40.vercel.app/)
+
 ## Portfolio Sections
 
 - Home
