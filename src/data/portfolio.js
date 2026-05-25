@@ -12,7 +12,7 @@ export const defaultPortfolio = {
 
   location: 'India',
   email: 'puttigreeshmasree@gmail.com',
-  phone: '+91 6300876232',
+  phone: '+91 XXXXX XXXXX',
   resumeFile: '/Greeshma_Sree_Resume.pdf',
 
   links: {
@@ -34,6 +34,48 @@ export const defaultPortfolio = {
     Tools: ['Git', 'GitHub', 'VS Code', 'Vercel', 'AI Tools']
   },
 
+  softSkills: ['Communication', 'Problem Solving', 'Teamwork'],
+
+  experience: [
+    {
+      role: 'Full Stack Web Development Intern',
+      company: 'Rinex',
+      duration: '3 Months',
+      points: [
+        'Built web applications using HTML, CSS, JavaScript, and MongoDB.',
+        'Developed REST APIs and integrated frontend with backend.',
+        'Debugged, tested, and optimized application performance.',
+        'Used Git for version control and team collaboration.'
+      ]
+    },
+    {
+      role: 'Artificial Intelligence Intern',
+      company: 'Skill Forge',
+      duration: '3 Months',
+      points: [
+        'Worked on AI concepts using Python, including data preprocessing and basic model building.',
+        'Implemented machine learning algorithms for simple prediction tasks.'
+      ]
+    }
+  ],
+
+  certifications: [
+    {
+      title: 'Web Development',
+      issuer: 'Rinex',
+      year: '2024',
+      link: ''
+    },
+    {
+      title: 'Artificial Intelligence with Python',
+      issuer: 'Skill Forge',
+      year: '2025',
+      link: ''
+    }
+  ],
+
+  interests: ['Web Development', 'Problem Solving', 'Data Structures', 'AI Tools'],
+
   education: [
     {
       degree: 'B.Tech in Computer Science Engineering',
@@ -49,6 +91,7 @@ export const defaultPortfolio = {
       title: 'Risk Prediction Dashboard',
       category: 'Healthcare Analytics',
       icon: 'Activity',
+
       description:
         'A full-stack risk prediction system that analyzes patient inputs and displays risk levels through a clean dashboard.',
 
@@ -76,6 +119,7 @@ export const defaultPortfolio = {
       title: 'Ghost Appointment - Spot-Fill Orchestrator',
       category: 'Real-Time Scheduling',
       icon: 'CalendarClock',
+
       description:
         'A real-time appointment waitlist system that fills cancelled slots by notifying priority users and allowing the first valid user to claim the slot.',
 
