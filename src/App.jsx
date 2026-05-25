@@ -3,6 +3,7 @@ import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Skills from './components/Skills.jsx';
+import ProfessionalDetails from './components/ProfessionalDetails.jsx';
 import Projects from './components/Projects.jsx';
 import Education from './components/Education.jsx';
 import Contact from './components/Contact.jsx';
@@ -11,27 +12,47 @@ import EditModal from './components/EditModal.jsx';
 import BackgroundEffects from './components/BackgroundEffects.jsx';
 import { defaultPortfolio } from './data/portfolio.js';
 
-const STORAGE_KEY = 'greeshma_portfolio_data_v3';
+const STORAGE_KEY = 'greeshma_portfolio_data_v5';
+const RESUME_FILE = '/Greeshma_Sree_Resume.pdf';
 
 export default function App() {
-  const [portfolio, setPortfolio] = useState(defaultPortfolio);
+  const [portfolio, setPortfolio] = useState({
+    ...defaultPortfolio,
+    resumeFile: RESUME_FILE
+  });
+
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [toast, setToast] = useState('');
 
   useEffect(() => {
     localStorage.removeItem('greeshma_portfolio_data_v2');
+    localStorage.removeItem('greeshma_portfolio_data_v3');
+    localStorage.removeItem('greeshma_portfolio_data_v4');
 
     const saved = localStorage.getItem(STORAGE_KEY);
 
     if (saved) {
       try {
-        setPortfolio({ ...defaultPortfolio, ...JSON.parse(saved) });
+        const savedPortfolio = JSON.parse(saved);
+
+        setPortfolio({
+          ...defaultPortfolio,
+          ...savedPortfolio,
+          resumeFile: RESUME_FILE
+        });
       } catch {
         localStorage.removeItem(STORAGE_KEY);
-        setPortfolio(defaultPortfolio);
+
+        setPortfolio({
+          ...defaultPortfolio,
+          resumeFile: RESUME_FILE
+        });
       }
     } else {
-      setPortfolio(defaultPortfolio);
+      setPortfolio({
+        ...defaultPortfolio,
+        resumeFile: RESUME_FILE
+      });
     }
   }, []);
 
@@ -45,8 +66,14 @@ export default function App() {
   );
 
   function savePortfolio(nextPortfolio) {
-    setPortfolio(nextPortfolio);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextPortfolio));
+    const updatedPortfolio = {
+      ...nextPortfolio,
+      resumeFile: RESUME_FILE
+    };
+
+    setPortfolio(updatedPortfolio);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedPortfolio));
+
     setToast('Portfolio details updated.');
     setTimeout(() => setToast(''), 2800);
   }
@@ -54,7 +81,14 @@ export default function App() {
   function resetPortfolio() {
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem('greeshma_portfolio_data_v2');
-    setPortfolio(defaultPortfolio);
+    localStorage.removeItem('greeshma_portfolio_data_v3');
+    localStorage.removeItem('greeshma_portfolio_data_v4');
+
+    setPortfolio({
+      ...defaultPortfolio,
+      resumeFile: RESUME_FILE
+    });
+
     setToast('Portfolio reset to latest default content.');
     setTimeout(() => setToast(''), 2800);
   }
@@ -69,6 +103,7 @@ export default function App() {
         <Hero portfolio={portfolio} totalSkills={totalSkills} />
         <About portfolio={portfolio} />
         <Skills portfolio={portfolio} />
+        <ProfessionalDetails portfolio={portfolio} />
         <Projects portfolio={portfolio} />
         <Education portfolio={portfolio} />
         <Contact portfolio={portfolio} />
