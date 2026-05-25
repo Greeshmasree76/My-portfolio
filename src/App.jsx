@@ -12,7 +12,7 @@ import EditModal from './components/EditModal.jsx';
 import BackgroundEffects from './components/BackgroundEffects.jsx';
 import { defaultPortfolio } from './data/portfolio.js';
 
-const STORAGE_KEY = 'greeshma_portfolio_data_v5';
+const STORAGE_KEY = 'greeshma_portfolio_data_v8';
 const RESUME_FILE = '/Greeshma_Sree_Resume.pdf';
 
 export default function App() {
@@ -28,6 +28,9 @@ export default function App() {
     localStorage.removeItem('greeshma_portfolio_data_v2');
     localStorage.removeItem('greeshma_portfolio_data_v3');
     localStorage.removeItem('greeshma_portfolio_data_v4');
+    localStorage.removeItem('greeshma_portfolio_data_v5');
+    localStorage.removeItem('greeshma_portfolio_data_v6');
+    localStorage.removeItem('greeshma_portfolio_data_v7');
 
     const saved = localStorage.getItem(STORAGE_KEY);
 
@@ -38,6 +41,7 @@ export default function App() {
         setPortfolio({
           ...defaultPortfolio,
           ...savedPortfolio,
+          phone: defaultPortfolio.phone,
           resumeFile: RESUME_FILE
         });
       } catch {
@@ -83,6 +87,9 @@ export default function App() {
     localStorage.removeItem('greeshma_portfolio_data_v2');
     localStorage.removeItem('greeshma_portfolio_data_v3');
     localStorage.removeItem('greeshma_portfolio_data_v4');
+    localStorage.removeItem('greeshma_portfolio_data_v5');
+    localStorage.removeItem('greeshma_portfolio_data_v6');
+    localStorage.removeItem('greeshma_portfolio_data_v7');
 
     setPortfolio({
       ...defaultPortfolio,

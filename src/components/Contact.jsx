@@ -1,4 +1,4 @@
-import { Code2, Github, Linkedin, Mail, MapPin, Send } from 'lucide-react';
+import { Code2, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionTitle from './SectionTitle.jsx';
@@ -68,6 +68,24 @@ export default function Contact({ portfolio }) {
                   </span>
                   <span className="text-sm font-semibold text-white/78">
                     {portfolio.email}
+                  </span>
+                </span>
+              </a>
+
+              <a
+                href={`tel:${portfolio.phone?.replace(/\s/g, '')}`}
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-3 transition hover:bg-white/10"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-blueGlow">
+                  <Phone />
+                </span>
+
+                <span>
+                  <span className="block text-xs font-black uppercase tracking-[0.18em] text-white/38">
+                    Phone
+                  </span>
+                  <span className="text-sm font-semibold text-white/78">
+                    {portfolio.phone}
                   </span>
                 </span>
               </a>

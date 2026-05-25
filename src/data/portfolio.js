@@ -12,7 +12,7 @@ export const defaultPortfolio = {
 
   location: 'India',
   email: 'puttigreeshmasree@gmail.com',
-  phone: '+91 XXXXX XXXXX',
+  phone: '+91 6300876232',
   resumeFile: '/Greeshma_Sree_Resume.pdf',
 
   links: {
@@ -61,16 +61,49 @@ export const defaultPortfolio = {
 
   certifications: [
     {
-      title: 'Web Development',
-      issuer: 'Rinex',
+      title: 'Web Development Course',
+      issuer: 'Rinex Organization',
       year: '2024',
-      link: ''
+      type: 'Course Completion',
+      date: '06 Sep 2024',
+      certificateId: 'WD24-RNC0-9089',
+      link: '/certificates/rinex-web-development-course.pdf'
+    },
+    {
+      title: 'Web Development Achievement',
+      issuer: 'Rinex Organization',
+      year: '2024',
+      type: 'Achievement Certificate',
+      date: '06 Sep 2024',
+      certificateId: 'WD24-RNG0-9084',
+      link: '/certificates/rinex-web-development-achievement.pdf'
+    },
+    {
+      title: 'Web Development Internship',
+      issuer: 'Rinex Technologies',
+      year: '2024',
+      type: 'Internship Completion',
+      date: '06 Sep 2024 - 30 Oct 2024',
+      certificateId: 'WD24-RNI0-9089',
+      link: '/certificates/rinex-web-development-internship.pdf'
     },
     {
       title: 'Artificial Intelligence with Python',
-      issuer: 'Skill Forge',
-      year: '2025',
-      link: ''
+      issuer: 'SkillForge E-Learning Solutions Pvt Ltd',
+      year: '2024',
+      type: 'Course Completion',
+      date: '15 Jan 2024 - 15 Mar 2024',
+      certificateId: '3129940314',
+      link: '/certificates/skillforge-ai-python-course.jpg'
+    },
+    {
+      title: 'Artificial Intelligence with Python Internship',
+      issuer: 'SkillForge E-Learning Solutions Pvt Ltd',
+      year: '2024',
+      type: 'Internship Completion',
+      date: '15 Jan 2024 - 15 Mar 2024',
+      certificateId: '869718651',
+      link: '/certificates/skillforge-ai-python-internship.jpg'
     }
   ],
 
@@ -91,13 +124,10 @@ export const defaultPortfolio = {
       title: 'Risk Prediction Dashboard',
       category: 'Healthcare Analytics',
       icon: 'Activity',
-
       description:
         'A full-stack risk prediction system that analyzes patient inputs and displays risk levels through a clean dashboard.',
-
       problem:
         'Manual risk checking is slow and inconsistent. This system helps identify high-risk records faster using structured inputs, prediction logic, and visual reports.',
-
       features: [
         'Secure login and register flow',
         'Patient risk input form',
@@ -105,27 +135,20 @@ export const defaultPortfolio = {
         'Dashboard cards and charts',
         'Report management'
       ],
-
       stack: ['React', 'Node.js', 'MongoDB', 'JWT'],
-
       live: 'https://riskprediction-frontend.vercel.app',
       github: 'https://github.com/Greeshmasree76/RiskPrediction.git',
-
       resumeBullet:
         'Built and deployed a full-stack risk prediction dashboard with authentication, prediction logic, analytics cards, charts, and report management.'
     },
-
     {
       title: 'Ghost Appointment - Spot-Fill Orchestrator',
       category: 'Real-Time Scheduling',
       icon: 'CalendarClock',
-
       description:
         'A real-time appointment waitlist system that fills cancelled slots by notifying priority users and allowing the first valid user to claim the slot.',
-
       problem:
         'Clinics and service providers lose time when users cancel or miss appointments. This system reduces empty slots by instantly offering the vacancy to waitlisted users.',
-
       features: [
         'Real-time cancellation detection',
         'Priority-based waitlist queue',
@@ -133,12 +156,9 @@ export const defaultPortfolio = {
         'Notify next 5 waitlisted users',
         'Race-safe first-claim booking flow'
       ],
-
       stack: ['React', 'Node.js', 'Socket.io', 'PostgreSQL'],
-
       live: '',
       github: '',
-
       resumeBullet:
         'Reduced resource idle time by implementing a WebSocket-based priority queue for instant vacancy fulfillment.'
     }
