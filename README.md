@@ -20,7 +20,7 @@ Professional developer portfolio built to showcase my skills, projects, educatio
 ### Risk Prediction Dashboard
 A full-stack risk prediction system that analyzes patient inputs and displays risk levels through a clean dashboard.
 
-Live Demo: https://riskprediction-frontend.vercel.app  
+Live Demo: https://safebirthai-frontend.vercel.app/  
 GitHub: https://github.com/Greeshmasree76/RiskPrediction.git
 
 ### Ghost Appointment - Spot-Fill Orchestrator
