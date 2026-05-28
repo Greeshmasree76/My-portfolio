@@ -121,7 +121,7 @@ export const defaultPortfolio = {
 
   projects: [
     {
-      title: 'Risk Prediction Dashboard',
+      title: 'Safe-Birth-AI',
       category: 'Healthcare Analytics',
       icon: 'Activity',
       description:
@@ -136,7 +136,7 @@ export const defaultPortfolio = {
         'Report management'
       ],
       stack: ['React', 'Node.js', 'MongoDB', 'JWT'],
-      live: 'https://riskprediction-frontend.vercel.app',
+      live: "https://safebirthai-frontend.vercel.app/"
       github: 'https://github.com/Greeshmasree76/RiskPrediction.git',
       resumeBullet:
         'Built and deployed a full-stack risk prediction dashboard with authentication, prediction logic, analytics cards, charts, and report management.'
