@@ -17,7 +17,7 @@ Professional developer portfolio built to showcase my skills, projects, educatio
 
 ## Featured Projects
 
-### Risk Prediction Dashboard
+### SafeBirth AI - C-Section Risk Prediction Platform
 A full-stack risk prediction system that analyzes patient inputs and displays risk levels through a clean dashboard.
 
 Live Demo: https://safebirthai-frontend.vercel.app/  
