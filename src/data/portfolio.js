@@ -130,7 +130,6 @@ export const defaultPortfolio = {
         'Manual risk checking is slow and inconsistent. This system helps identify high-risk records faster using structured inputs, prediction logic, and visual reports.',
       features: [
         'Secure login and register flow',
-        'Patient risk input form',
         'Risk prediction result',
         'Dashboard cards and charts',
         'Report management'
