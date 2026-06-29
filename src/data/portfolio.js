@@ -141,25 +141,27 @@ export const defaultPortfolio = {
         'Built and deployed a full-stack risk prediction dashboard with authentication, prediction logic, analytics cards, charts, and report management.'
     },
     {
-      title: 'Ghost Appointment - Spot-Fill Orchestrator',
-      category: 'Real-Time Scheduling',
+      title: 'MediQueue – Doctor Appointment & Queue Management System',
+      category: 'Healthcare Management',
       icon: 'CalendarClock',
       description:
-        'A real-time appointment waitlist system that fills cancelled slots by notifying priority users and allowing the first valid user to claim the slot.',
+        'A web-based healthcare application that simplifies doctor appointment booking and queue management. Users can search doctors by specialty and location, view hospitals, book appointments, generate queue tokens, and monitor queue status through an intuitive interface.',
       problem:
-        'Clinics and service providers lose time when users cancel or miss appointments. This system reduces empty slots by instantly offering the vacancy to waitlisted users.',
+        'Patients often face long waiting times and difficulty finding the right doctor. MediQueue provides a digital appointment booking and queue management system that helps reduce waiting time and improves the overall patient experience.',
       features: [
-        'Real-time cancellation detection',
-        'Priority-based waitlist queue',
-        'Socket.io slot-claim updates',
-        'Notify next 5 waitlisted users',
-        'Race-safe first-claim booking flow'
+        'Patient login interface',
+        'Search doctors by location & specialty',
+        'View hospitals and doctors list',
+        'Book appointments',
+        'Queue token generation',
+        'Live queue/status display',
+        'Responsive design'
       ],
-      stack: ['React', 'Node.js', 'Socket.io', 'PostgreSQL'],
-      live: '',
-      github: '',
+      stack: ['HTML5', 'CSS3', 'JavaScript (Vanilla JS)'],
+      live: 'https://greeshmasree76.github.io/mediqueue/',
+      github: 'https://github.com/Greeshmasree76/mediqueue',
       resumeBullet:
-        'Reduced resource idle time by implementing a WebSocket-based priority queue for instant vacancy fulfillment.'
+        'Developed a responsive healthcare appointment and queue management application using HTML, CSS, and Vanilla JavaScript, featuring doctor search, appointment booking, queue token generation, and live status updates.'
     }
   ]
 };
