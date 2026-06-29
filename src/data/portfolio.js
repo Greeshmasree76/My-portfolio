@@ -77,33 +77,6 @@ export const defaultPortfolio = {
       date: '06 Sep 2024',
       certificateId: 'WD24-RNG0-9084',
       link: '/certificates/rinex-web-development-achievement.pdf'
-    },
-    {
-      title: 'Web Development Internship',
-      issuer: 'Rinex Technologies',
-      year: '2024',
-      type: 'Internship Completion',
-      date: '06 Sep 2024 - 30 Oct 2024',
-      certificateId: 'WD24-RNI0-9089',
-      link: '/certificates/rinex-web-development-internship.pdf'
-    },
-    {
-      title: 'Artificial Intelligence with Python',
-      issuer: 'SkillForge E-Learning Solutions Pvt Ltd',
-      year: '2024',
-      type: 'Course Completion',
-      date: '15 Jan 2024 - 15 Mar 2024',
-      certificateId: '3129940314',
-      link: '/certificates/skillforge-ai-python-course.jpg'
-    },
-    {
-      title: 'Artificial Intelligence with Python Internship',
-      issuer: 'SkillForge E-Learning Solutions Pvt Ltd',
-      year: '2024',
-      type: 'Internship Completion',
-      date: '15 Jan 2024 - 15 Mar 2024',
-      certificateId: '869718651',
-      link: '/certificates/skillforge-ai-python-internship.jpg'
     }
   ],
 
@@ -130,16 +103,18 @@ export const defaultPortfolio = {
         'Manual risk checking is slow and inconsistent. This system helps identify high-risk records faster using structured inputs, prediction logic, and visual reports.',
       features: [
         'Secure login and register flow',
+        'Patient risk input form',
         'Risk prediction result',
         'Dashboard cards and charts',
         'Report management'
       ],
       stack: ['React', 'Node.js', 'MongoDB', 'JWT'],
-      live: "https://safebirthai-frontend.vercel.app/",
+      live: 'https://safebirthai-frontend.vercel.app/',
       github: 'https://github.com/Greeshmasree76/RiskPrediction.git',
       resumeBullet:
         'Built and deployed a full-stack risk prediction dashboard with authentication, prediction logic, analytics cards, charts, and report management.'
     },
+
     {
       title: 'MediQueue – Doctor Appointment & Queue Management System',
       category: 'Healthcare Management',
@@ -161,7 +136,7 @@ export const defaultPortfolio = {
       live: 'https://greeshmasree76.github.io/mediqueue/',
       github: 'https://github.com/Greeshmasree76/mediqueue',
       resumeBullet:
-        'Developed a responsive healthcare appointment and queue management application using HTML, CSS, and Vanilla JavaScript, featuring doctor search, appointment booking, queue token generation, and live status updates.'
+        'Developed a responsive healthcare appointment and queue management application using HTML, CSS, and Vanilla JS with real-time style queue tracking.'
     }
   ]
 };

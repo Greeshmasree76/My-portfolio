@@ -20,14 +20,17 @@ export function generateResumePdf(portfolio) {
   function sectionTitle(title) {
     checkPageSpace(14);
     y += 4;
+
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(12);
     doc.setTextColor(25, 25, 25);
     doc.text(title.toUpperCase(), margin, y);
 
     y += 2;
+
     doc.setDrawColor(90, 90, 90);
     doc.line(margin, y, pageWidth - margin, y);
+
     y += 6;
   }
 
@@ -57,6 +60,7 @@ export function generateResumePdf(portfolio) {
     const lines = doc.splitTextToSize(text, contentWidth - 5);
 
     checkPageSpace(6);
+
     doc.text('•', margin, y);
     doc.text(lines[0], margin + 5, y);
     y += 5;
@@ -68,10 +72,11 @@ export function generateResumePdf(portfolio) {
     });
   }
 
-  function smallLink(label, value) {
+  function linkText(label, value) {
     if (!value) return;
 
     checkPageSpace(5);
+
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9);
     doc.setTextColor(30, 30, 30);
@@ -79,9 +84,16 @@ export function generateResumePdf(portfolio) {
 
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(40, 80, 160);
-    doc.text(value, margin + 24, y);
 
+    const lines = doc.splitTextToSize(value, contentWidth - 25);
+
+    doc.text(lines[0], margin + 24, y);
     y += 5;
+
+    lines.slice(1).forEach((line) => {
+      doc.text(line, margin + 24, y);
+      y += 5;
+    });
   }
 
   // Header
@@ -102,16 +114,14 @@ export function generateResumePdf(portfolio) {
   doc.setFontSize(9.5);
   doc.setTextColor(55, 55, 55);
 
-  const contactLine = [
-    portfolio.email,
-    portfolio.phone,
-    portfolio.location
-  ]
+  const contactLine = [portfolio.email, portfolio.phone, portfolio.location]
     .filter(Boolean)
     .join(' | ');
 
-  doc.text(contactLine, margin, y);
-  y += 6;
+  if (contactLine) {
+    doc.text(contactLine, margin, y);
+    y += 6;
+  }
 
   const linksLine = [
     portfolio.links?.github,
@@ -121,22 +131,27 @@ export function generateResumePdf(portfolio) {
     .filter(Boolean)
     .join(' | ');
 
-  const linkLines = doc.splitTextToSize(linksLine, contentWidth);
-  linkLines.forEach((line) => {
-    doc.text(line, margin, y);
-    y += 5;
-  });
+  if (linksLine) {
+    const linkLines = doc.splitTextToSize(linksLine, contentWidth);
+
+    linkLines.forEach((line) => {
+      doc.text(line, margin, y);
+      y += 5;
+    });
+  }
 
   y += 2;
+
   doc.setDrawColor(120, 120, 120);
   doc.line(margin, y, pageWidth - margin, y);
+
   y += 7;
 
   // Summary
   sectionTitle('Professional Summary');
   normalText(portfolio.about || portfolio.headline);
 
-  // Skills
+  // Technical Skills
   sectionTitle('Technical Skills');
 
   Object.entries(portfolio.skills || {}).forEach(([category, skills]) => {
@@ -151,22 +166,49 @@ export function generateResumePdf(portfolio) {
     doc.setTextColor(45, 45, 45);
 
     const skillText = Array.isArray(skills) ? skills.join(', ') : skills;
-    const skillLines = doc.splitTextToSize(skillText, contentWidth - 32);
+    const skillLines = doc.splitTextToSize(skillText, contentWidth - 35);
 
-    doc.text(skillLines[0] || '', margin + 32, y);
+    doc.text(skillLines[0] || '', margin + 35, y);
     y += 5;
 
     skillLines.slice(1).forEach((line) => {
-      doc.text(line, margin + 32, y);
+      doc.text(line, margin + 35, y);
       y += 5;
     });
+  });
+
+  // Soft Skills
+  sectionTitle('Soft Skills');
+  normalText((portfolio.softSkills || []).join(', '));
+
+  // Experience
+  sectionTitle('Experience / Internship');
+
+  (portfolio.experience || []).forEach((item) => {
+    checkPageSpace(18);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10.5);
+    doc.setTextColor(25, 25, 25);
+    doc.text(item.role || '', margin, y);
+    y += 5;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9.5);
+    doc.setTextColor(55, 55, 55);
+    doc.text(`${item.company || ''} | ${item.duration || ''}`, margin, y);
+    y += 5;
+
+    (item.points || []).forEach((point) => bulletText(point));
+
+    y += 2;
   });
 
   // Projects
   sectionTitle('Projects');
 
   (portfolio.projects || []).forEach((project, index) => {
-    checkPageSpace(18);
+    checkPageSpace(20);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
@@ -177,8 +219,11 @@ export function generateResumePdf(portfolio) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9.5);
     doc.setTextColor(70, 70, 70);
-    doc.text(project.category || '', margin, y);
-    y += 5;
+
+    if (project.category) {
+      doc.text(project.category, margin, y);
+      y += 5;
+    }
 
     bulletText(project.description);
     bulletText(project.problem);
@@ -196,14 +241,27 @@ export function generateResumePdf(portfolio) {
     }
 
     if (project.live) {
-      smallLink('Live', project.live);
+      linkText('Live', project.live);
     }
 
     if (project.github) {
-      smallLink('GitHub', project.github);
+      linkText('GitHub', project.github);
     }
 
     y += 3;
+  });
+
+  // Certifications
+  sectionTitle('Certifications');
+
+  (portfolio.certifications || []).forEach((certificate) => {
+    bulletText(
+      `${certificate.title} - ${certificate.issuer} | ${certificate.type} | ${certificate.date} | ID: ${certificate.certificateId}`
+    );
+
+    if (certificate.link) {
+      linkText('Certificate', certificate.link);
+    }
   });
 
   // Education
@@ -228,6 +286,10 @@ export function generateResumePdf(portfolio) {
       normalText(edu.details, 9.5, 5);
     }
   });
+
+  // Interests
+  sectionTitle('Interests');
+  normalText((portfolio.interests || []).join(', '));
 
   // Footer
   const totalPages = doc.internal.getNumberOfPages();
