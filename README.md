@@ -23,23 +23,32 @@ I focus on building real-world web applications with clean UI and structured bac
 
 ---
 
-## 📸 Screenshots (Safe-Birth-AI)
-
-### Home Dashboard
-![Safe Birth AI Home](./screenshots/safe-birth-home.png)
-
-### Prediction Page
-![Safe Birth AI Prediction](./screenshots/safe-birth-prediction.png)
-
-### Analytics Dashboard
-![Safe Birth AI Analytics](./screenshots/safe-birth-analytics.png)
-
----
-
 ### MediQueue – Doctor Appointment & Queue Management System
 - Web-based appointment and queue system
 - Built using HTML, CSS, JavaScript (Vanilla JS)
 - Features doctor search, booking, and queue tracking
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+![Home](./screenshots/home.png)
+
+### Projects Page
+![Projects](./screenshots/projects.png)
+
+### Skills Section
+![Skills](./screenshots/skills.png)
+
+### About Section
+![About](./screenshots/about.png)
+
+### Contact Section
+![Contact](./screenshots/contact.png)
+
+### Full Portfolio View
+![Full Portfolio](./screenshots/full-portfolio.png)
 
 ---
 
