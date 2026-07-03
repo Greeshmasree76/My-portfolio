@@ -13,50 +13,26 @@ import BackgroundEffects from './components/BackgroundEffects.jsx';
 import { defaultPortfolio } from './data/portfolio.js';
 
 const STORAGE_KEY = 'greeshma_portfolio_data_v8';
-const RESUME_FILE = '/Greeshma_Sree_Resume.pdf';
 
 export default function App() {
-  const [portfolio, setPortfolio] = useState({
-    ...defaultPortfolio,
-    resumeFile: RESUME_FILE
-  });
+  const [portfolio, setPortfolio] = useState(defaultPortfolio);
 
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [toast, setToast] = useState('');
 
   useEffect(() => {
-    localStorage.removeItem('greeshma_portfolio_data_v2');
-    localStorage.removeItem('greeshma_portfolio_data_v3');
-    localStorage.removeItem('greeshma_portfolio_data_v4');
-    localStorage.removeItem('greeshma_portfolio_data_v5');
-    localStorage.removeItem('greeshma_portfolio_data_v6');
-    localStorage.removeItem('greeshma_portfolio_data_v7');
-
     const saved = localStorage.getItem(STORAGE_KEY);
 
     if (saved) {
       try {
-        const savedPortfolio = JSON.parse(saved);
-
         setPortfolio({
           ...defaultPortfolio,
-          ...savedPortfolio,
-          phone: defaultPortfolio.phone,
-          resumeFile: RESUME_FILE
+          ...JSON.parse(saved)
         });
       } catch {
         localStorage.removeItem(STORAGE_KEY);
-
-        setPortfolio({
-          ...defaultPortfolio,
-          resumeFile: RESUME_FILE
-        });
+        setPortfolio(defaultPortfolio);
       }
-    } else {
-      setPortfolio({
-        ...defaultPortfolio,
-        resumeFile: RESUME_FILE
-      });
     }
   }, []);
 
@@ -70,49 +46,53 @@ export default function App() {
   );
 
   function savePortfolio(nextPortfolio) {
-    const updatedPortfolio = {
-      ...nextPortfolio,
-      resumeFile: RESUME_FILE
-    };
+    setPortfolio(nextPortfolio);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextPortfolio));
 
-    setPortfolio(updatedPortfolio);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedPortfolio));
+    setToast('Portfolio updated successfully.');
 
-    setToast('Portfolio details updated.');
-    setTimeout(() => setToast(''), 2800);
+    setTimeout(() => {
+      setToast('');
+    }, 2500);
   }
 
   function resetPortfolio() {
     localStorage.removeItem(STORAGE_KEY);
-    localStorage.removeItem('greeshma_portfolio_data_v2');
-    localStorage.removeItem('greeshma_portfolio_data_v3');
-    localStorage.removeItem('greeshma_portfolio_data_v4');
-    localStorage.removeItem('greeshma_portfolio_data_v5');
-    localStorage.removeItem('greeshma_portfolio_data_v6');
-    localStorage.removeItem('greeshma_portfolio_data_v7');
 
-    setPortfolio({
-      ...defaultPortfolio,
-      resumeFile: RESUME_FILE
-    });
+    setPortfolio(defaultPortfolio);
 
-    setToast('Portfolio reset to latest default content.');
-    setTimeout(() => setToast(''), 2800);
+    setToast('Portfolio reset successfully.');
+
+    setTimeout(() => {
+      setToast('');
+    }, 2500);
   }
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-night text-slate-100">
       <BackgroundEffects />
 
-      <Navbar portfolio={portfolio} onEdit={() => setIsEditorOpen(true)} />
+      <Navbar
+        portfolio={portfolio}
+        onEdit={() => setIsEditorOpen(true)}
+      />
 
       <main className="relative z-10">
-        <Hero portfolio={portfolio} totalSkills={totalSkills} />
+        <Hero
+          portfolio={portfolio}
+          totalSkills={totalSkills}
+        />
+
         <About portfolio={portfolio} />
+
         <Skills portfolio={portfolio} />
+
         <ProfessionalDetails portfolio={portfolio} />
+
         <Projects portfolio={portfolio} />
+
         <Education portfolio={portfolio} />
+
         <Contact portfolio={portfolio} />
       </main>
 
@@ -127,7 +107,7 @@ export default function App() {
       />
 
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-[80] -translate-x-1/2 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm text-white shadow-glow backdrop-blur-xl">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm text-white shadow-glow backdrop-blur-xl">
           {toast}
         </div>
       )}

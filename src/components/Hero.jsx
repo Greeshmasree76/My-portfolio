@@ -8,7 +8,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { generateResumePdf } from '../utils/generateResumePdf.js';
+
 
 function openOrNotify(url, label) {
   if (!url) {
@@ -54,14 +54,15 @@ export default function Hero({ portfolio, totalSkills }) {
               <ArrowDownRight size={17} />
             </a>
 
-            <button
-              type="button"
-              onClick={() => generateResumePdf(portfolio)}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-white/15"
-            >
-              <Download size={17} />
-              Download Resume
-            </button>
+            <a
+  href={portfolio.resumeFile}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-white/15"
+>
+  <Download size={17} />
+  Resume
+</a>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
